@@ -1,0 +1,221 @@
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+    --dk:#1b3a2a;
+    --md:#2d5c3e;
+    --lt:#e8f0eb;
+    --bd:#c2d4c9;
+    --tx:#1a2e22;
+    --sub:#4a6b56;
+    --alt:#f2f7f4;
+    --white:#ffffff;
+}
+body{
+    background:#dde6e0;
+    font-family:'Source Sans 3',sans-serif;
+    font-size:13px;
+    color:var(--tx);
+    padding:30px 16px 60px;
+    overflow: auto !important;
+}
+.page {
+    width: 210mm;       /* exact A4 width */
+    min-width: 210mm;
+    max-width: 210mm;
+    /* optional: height fixed or auto */
+    min-height: 297mm;  /* exact A4 height */
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid #b8cfc3;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding: 0;
+}
+
+
+/* ── HEADER ── */
+.hdr{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:22px 32px 18px;
+    background:#fff;
+}
+.logo{line-height:1}
+.logo-name{
+    font-family:'EB Garamond',serif;
+    font-size:34px;
+    font-weight:700;
+    color:var(--dk);
+    letter-spacing:.04em;
+    text-transform:uppercase;
+}
+.logo-name .leaf{font-size:20px;vertical-align:middle;color:var(--md)}
+.logo-divider{
+    display:flex;align-items:center;gap:5px;margin-top:1px;
+}
+.logo-divider span{
+    font-size:8.5px;letter-spacing:.25em;font-weight:700;
+    color:var(--dk);text-transform:uppercase;
+}
+.logo-divider hr{flex:1;border:none;border-top:1.5px solid var(--dk);width:22px}
+.hdr-right{text-align:right}
+.hdr-right h1{
+    font-family:'EB Garamond',serif;
+    font-size:28px;font-weight:700;
+    color:var(--dk);letter-spacing:.06em;text-transform:uppercase;
+}
+.hdr-right .co{font-size:13px;font-weight:600;color:var(--tx);margin-top:2px}
+.hdr-right .ins{font-size:11px;font-style:italic;color:var(--sub);margin-top:1px}
+
+/* ── DIVIDER LINE ── */
+.top-rule{height:3px;background:var(--dk);margin:0 32px}
+
+/* ── MAIN BODY ── */
+.body{padding:20px 32px 28px}
+
+/* two-col top */
+.two-top{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin-bottom:18px}
+
+/* section title */
+.stitle{
+    font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--tx);border-bottom:2px solid var(--dk);padding-bottom:3px;margin-bottom:10px;
+}
+
+/* field rows */
+.frow{display:flex;align-items:center;gap:5px;margin-bottom:7px;flex-wrap:wrap}
+.flabel{font-size:12px;font-weight:700;white-space:nowrap;color:var(--tx)}
+input[type=text],input[type=date],input[type=email],input[type=tel]{
+    border:none;border-bottom:1px solid var(--bd);
+    padding:2px 5px;font-size:12px;
+    font-family:'Source Sans 3',sans-serif;color:var(--tx);
+    background:transparent;outline:none;
+    transition:border-color .15s;
+}
+input:focus{border-bottom-color:var(--md);background:rgba(45,92,62,.04)}
+
+/* quote details 4-col grid */
+.qd-grid{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:5px 8px}
+/* client info 2-col */
+.ci-grid{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:5px 8px}
+.ci-phone-row{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:5px 8px}
+
+/* ── PROPERTY TABLE ── */
+.prop-tbl{width:100%;border-collapse:collapse;margin-bottom:10px}
+.prop-tbl th{
+    background:var(--dk);color:#fff;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:700;padding:6px 10px;
+    text-align:center;border:1px solid var(--dk);
+}
+.prop-tbl td{
+    border:1px solid var(--bd);padding:7px 12px;vertical-align:top;
+    font-size:12px;
+}
+.ck-item{display:flex;align-items:center;gap:5px;margin-bottom:5px;cursor:pointer;user-select:none}
+.ck-item:last-child{margin-bottom:0}
+.ckbox{
+    width:13px;height:13px;border:1.5px solid #8aab97;border-radius:1px;
+    display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+    background:#fff;font-size:10px;font-weight:900;color:var(--dk);line-height:1;
+}
+.ckbox.on::after{content:'X'}
+.cond-row{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:6px 12px}
+.cond-row input{width:100%}
+
+/* ── SERVICE TYPE ── */
+.svc-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bd);margin-bottom:14px}
+.svc-box{
+    padding:12px 16px;display:flex;flex-direction:column;align-items:center;
+    gap:4px;cursor:pointer;user-select:none;transition:background .15s;position:relative;
+}
+.svc-box:first-child{border-right:1px solid var(--bd)}
+.svc-box.on{background:var(--lt)}
+.svc-top{display:flex;align-items:center;gap:6px;align-self:flex-start;margin-bottom:2px}
+.svc-ck{
+    width:14px;height:14px;border:1.5px solid #8aab97;border-radius:1px;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:#fff;font-size:10px;font-weight:900;color:var(--dk);flex-shrink:0;
+}
+.svc-box.on .svc-ck::after{content:'X'}
+.svc-title{font-size:13.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tx)}
+.svc-sub{font-size:10px;color:var(--sub);text-align:center}
+
+/* ── PRICING TABLE ── */
+.price-tbl{width:100%;border-collapse:collapse;margin-bottom:0}
+.price-tbl thead th{
+    background:var(--dk);color:#fff;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:700;padding:7px 10px;
+    border:1px solid var(--dk);
+}
+.price-tbl thead th:first-child{text-align:left}
+.price-tbl thead th:not(:first-child){text-align:right}
+.price-tbl tbody td{border:1px solid var(--bd);padding:5px 8px;font-size:12px}
+.price-tbl tbody tr:nth-child(even) td{background:var(--alt)}
+.price-tbl tbody td input{
+    border:none;outline:none;background:transparent;width:100%;
+    font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--tx);padding:0;
+}
+.price-tbl tbody td input:focus{background:rgba(45,92,62,.06);padding:0 3px;border-radius:1px}
+/* subtotal rows */
+.price-tbl .sum-row td{
+    border:1px solid var(--bd);padding:5px 10px;
+    background:var(--alt);
+}
+.price-tbl .sum-row td:first-child{text-align:right;font-weight:700;font-size:12px;color:var(--sub)}
+.price-tbl .sum-row td:last-child{font-size:12px}
+.price-tbl .sum-row td input{text-align:right}
+.price-tbl .total-row td{
+    background:var(--dk);color:#fff;font-weight:700;font-size:13px;
+    border:1px solid var(--dk);padding:6px 10px;
+}
+.price-tbl .total-row td:first-child{text-align:right}
+.price-tbl .total-row td input{color:#fff;font-weight:700;text-align:right}
+
+/* empty rows */
+.price-tbl .empty-row td{height:24px}
+
+/* ── NOTES ── */
+.notes-box{margin:14px 0}
+.notes-box textarea{
+    width:100%;border:1px solid var(--bd);border-radius:2px;
+    padding:6px 8px;font-size:12px;font-family:'Source Sans 3',sans-serif;
+    color:var(--sub);background:var(--alt);resize:vertical;min-height:44px;outline:none;
+}
+.notes-box textarea:focus{border-color:var(--md)}
+
+/* ── ACCEPTANCE ── */
+.accept-text{font-size:11.5px;color:var(--tx);margin-bottom:8px}
+.agree-row{display:flex;gap:24px;margin-bottom:14px}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.sig-block{margin-bottom:10px}
+.sig-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:4px;font-weight:600}
+.sig-input{
+    border:none;border-bottom:1.5px solid var(--dk);width:100%;height:40px;
+    background:transparent;font-family:'Source Sans 3',sans-serif;font-size:12px;
+    color:var(--tx);outline:none;
+}
+.sig-inline{display:flex;align-items:center;gap:8px}
+.sig-inline .flabel{white-space:nowrap}
+.sig-inline input{flex:1}
+
+/* ── FOOTER ── */
+.page-footer{
+    background:var(--dk);color:rgba(255,255,255,.7);
+    text-align:center;font-size:10.5px;letter-spacing:.07em;
+    padding:8px 16px;margin-top:0;
+}
+
+/* print */
+@media print{
+    body{background:#fff;padding:0}
+    .page{box-shadow:none;border:none}
+    .print-bar{display:none}
+}
+.print-bar{max-width:780px;margin:0 auto 12px;text-align:right}
+.print-bar button{
+    background:var(--dk);color:#fff;border:none;border-radius:3px;
+    padding:7px 20px;font-family:'Source Sans 3',sans-serif;
+    font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    cursor:pointer;transition:background .15s;
+}
+.print-bar button:hover{background:var(--md)}

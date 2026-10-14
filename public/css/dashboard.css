@@ -1,0 +1,390 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#f5f7f6;
+   
+    display:flex;
+    color:black;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:250px;
+    background:#1B3A2A;
+    padding:30px 20px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;          /* keeps the ::before glow clipped to the sidebar */
+    transition:0.4s;
+    left:0;
+    height:100;             /* explicit full height so the flex column has a bound */
+}
+
+/* subtle background glow */
+
+.sidebar:before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:radial-gradient(circle,rgba(255,255,255,0.15),transparent);
+    top:-150px;
+    left:-150px;
+    animation:spin 12s linear infinite;
+    opacity:.5;
+    pointer-events:none;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:40px;
+    letter-spacing:1px;
+    margin-top:20px;
+    color:white;
+    flex:0 0 auto;           /* logo stays fixed at top, never shrinks or scrolls */
+}
+
+/* NAV */
+
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1 1 auto;           /* nav consumes remaining height below the logo */
+    min-height:0;            /* CRITICAL: overrides flex min-height:auto so scroll can engage */
+    overflow-y:auto;         /* items past the bottom now scroll instead of clipping */
+    overflow-x:hidden;
+    padding-right:4px;       /* breathing room for the scrollbar */
+}
+
+/* thin scrollbar styled to the dark theme */
+.nav::-webkit-scrollbar{
+    width:6px;
+}
+.nav::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.25);
+    border-radius:10px;
+}
+.nav::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.nav a{
+    text-decoration:none;
+    color:white;
+    padding:12px 15px;
+    border-radius:8px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+    flex:0 0 auto;           /* each link keeps its natural height inside the scroll area */
+}
+
+.nav a:hover{
+    background:black;
+    transform:translateX(5px);
+}
+.nav a:hover,
+.nav a.active {
+    background:black;
+    transform:translateX(5px);
+}
+
+
+.nav a:before{
+    content:"";
+    position:absolute;
+    width:5px;
+    height:100%;
+    left:0;
+    top:0;
+    background:white;
+    transform:scaleY(0);
+    transition:.3s;
+}
+
+.nav a:hover:before{
+    transform:scaleY(1);
+}
+
+/* LOGOUT (form button inside nav) */
+
+.logout-link{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    color:white;
+    padding:12px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.logout-link:hover{
+    background:black;
+    transform:translateX(5px);
+}
+
+/* CLOSE BUTTON */
+
+.close-btn{
+    display:none;
+    font-size:30px;
+    position:absolute;
+    top:15px;
+    right:20px;
+    cursor:pointer;
+    z-index:10;
+    color:white;
+}
+
+/* MAIN */
+
+.main{
+    flex:1;
+    min-width:0;             /* lets wide tables scroll inside .main instead of stretching the page */
+    padding:40px;
+    overflow:auto;
+    background:white;
+    color:black;
+}
+
+@media (max-width:768px){
+    .main{ padding:20px 14px; }
+    .table-container{ margin-top:20px; padding:14px; }
+    .pagination{ flex-wrap:wrap; }
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header h1 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .header a {
+        width: 100%;
+    }
+
+    .header .btn {
+        width: 100%;
+    }
+}
+/* MOBILE MENU BUTTON */
+
+.menu-btn{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1B3A2A;
+    color:white;
+    border-radius:12px;
+    padding:25px;
+    transition:.3s;
+    border:1px solid rgba(0,0,0,0.1);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+/* TABLE */
+
+.table-container{
+    margin-top:40px;
+    background:#1B3A2A;
+    padding:20px;
+    border-radius:10px;
+    color:white;
+}
+
+/*.table-wrapper{*/
+/*    overflow-x:auto;*/
+/*}*/
+
+/*table{*/
+/*    min-width:600px;*/
+/*    width:100%;*/
+/*    border-collapse:collapse;*/
+/*}*/
+
+th,td{
+    padding:12px;
+    text-align:left;
+}
+
+th{
+    background:black;
+}
+
+tr:nth-child(even){
+    background:rgba(255,255,255,0.08);
+}
+
+/* BUTTON */
+
+.btn{
+    background:#1B3A2A;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:black;
+    transform:scale(1.05);
+}
+
+/* RESPONSIVE TABLES (table.resp-table)
+   On phones each row becomes a card; js/responsive-table.js copies the
+   column header into each cell's data-label so it can be shown beside the value. */
+
+@media (max-width:768px){
+    .table-wrapper{ min-width:0 !important; overflow-x:visible !important; }
+
+    table.resp-table{
+        min-width:0 !important;
+        width:100% !important;
+        table-layout:auto !important;
+        border:none !important;
+    }
+    table.resp-table thead{ display:none; }
+    table.resp-table,
+    table.resp-table tbody,
+    table.resp-table tr,
+    table.resp-table td{ display:block; width:100%; }
+
+    table.resp-table tr{
+        background:rgba(255,255,255,0.06) !important;
+        border:1px solid rgba(255,255,255,0.15);
+        border-radius:10px;
+        margin-bottom:12px;
+        padding:4px 12px;
+    }
+
+    table.resp-table td{
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-start;
+        gap:12px;
+        border:none !important;
+        border-bottom:1px solid rgba(255,255,255,0.1) !important;
+        padding:9px 0 !important;
+        text-align:right;
+        font-size:13.5px;
+        overflow-wrap:anywhere;
+    }
+    table.resp-table td:last-child{ border-bottom:none !important; }
+    table.resp-table td > .resp-val{ flex:1 1 auto; min-width:0; }
+    table.resp-table td > .resp-val > br:first-child{ display:none; }
+
+    table.resp-table td::before{
+        content:attr(data-label);
+        flex:0 0 38%;
+        text-align:left;
+        font-weight:600;
+        font-size:12px;
+        text-transform:uppercase;
+        letter-spacing:.3px;
+        opacity:.7;
+    }
+    table.resp-table td[data-label=""]::before{ display:none; }
+    table.resp-table td[data-label=""]{ justify-content:center; text-align:center; }
+
+    /* action cell: label on top, buttons in a 2-column grid */
+    table.resp-table td.resp-actions{ display:block; text-align:left; }
+    table.resp-table td.resp-actions::before{ display:block; margin-bottom:8px; }
+    table.resp-table td.resp-actions > div{ gap:8px !important; }
+    table.resp-table td.resp-actions > div > a,
+    table.resp-table td.resp-actions > div > form{
+        flex:1 1 calc(50% - 8px);
+        min-width:0;
+    }
+    table.resp-table td.resp-actions > div > a,
+    table.resp-table td.resp-actions > div > form > button{
+        justify-content:center;
+        width:100%;
+        padding:8px 10px !important;
+        font-size:12.5px !important;
+        white-space:nowrap;
+    }
+    table.resp-table td.resp-actions .modal{ flex:none; }
+
+    /* toolbar buttons above the tables */
+    .top-actions > button{ flex:1 1 calc(50% - 10px); font-size:13px; padding:10px 8px !important; }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        position:fixed;
+        left:-260px;
+        top:0;
+        height:100%;
+        z-index:1000;
+    }
+
+    .sidebar.active{
+        left:0;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .close-btn{
+        display:block;
+    }
+
+}
